@@ -1,0 +1,817 @@
+import matplotlib
+from matplotlib import pyplot as plt
+import numpy as np
+menu_options = {
+    1: 'Demographics (OPTIONAL)',
+    2: 'Alcohol Addiction Screening',
+    3: 'Depression',
+    4: 'Anxiety',
+    5: 'Eating Disorder',
+}
+#depression_options = {
+    #"NOT AT ALL": 0,
+    #"SEVERAL DAYS": 1,
+    #"MORE THAN HALF DAYS" : 2,
+    #"NEARLY EVERYDAY": 3
+#}
+depression_score = []
+depression_questions = [1,2,3,4,5,6,7,8,9,10]
+warning_criteria_container = []
+addiction_alcohol_container = [] 
+Demographics_response_storage = []
+Anxiety_container = []
+Eating_disorder_container = []
+def print_menu():
+    for key in menu_options.keys():
+        print (key, '-', menu_options[key])
+
+def option1():
+    #group_choice = {
+      #1: 'veteran or active-duty military',
+      #2: 'Caregiver of someone living with emotional or physical illness',
+      #3: 'LGBTQ+',
+      #4: 'Student',
+      #5: 'Trauma survivor',
+      #6: 'New or expecting parent',
+      #7: 'Healthcare worker'
+      #}
+
+    print("Enter your age")
+    Demographics_1 = int(input())
+
+    print("Enter your Sex")
+    Demographics_2 = input()
+
+    print("Enter your house hold income")
+    Demographics_3 = input()
+
+    print("what country do you live in")
+    Demographics_4 = input()
+    print("_______________________________________________________________________")
+    print("|  Which group or groups describes your situation best?               |")
+    print("|_____________________________________________________________________|")
+    print("|  (1) veteran or active-duty military                                |")
+    print("|  (2) Caregiver of someone living with emotional or physical illness |")
+    print("|  (3) LGBTQ+                                                         |")
+    print("|  (4) Student                                                        |")
+    print("|  (5) Trauma survivor                                                |")
+    print("|  (6) New or expecting parent                                        |")
+    print("|  (7) Healthcare worker                                              |")
+    print("|_____________________________________________________________________|")
+    print("Enter the number of groups you associate with below (1-7) or 0 if none apply to you")
+    user_choice = int(input())
+    if(user_choice == range(1,7)):
+      for index in range(user_choice):
+        user_choice2 = int(input())
+        Demographics_response_storage.append(user_choice2)
+        if user_choice == 1:
+          print("Has your experience in the service attributed to current or past suicidal thoughts? (Y/N)?")
+          response_d1 = str(input())
+          if(response_d1 == "yes" or response_d1 == "Y" or response_d1 == "y"):
+            print("Veteran suicide rates are at the highest level in recorded history, with annual deaths by suicide at over 6,000 veterans per year. Overall suicide rates within the United States have increased by 30% between 1999 and 2016. ")
+
+          print("Has your experience in the service attributed to substance use or abuse? (Y/N)?")
+          response_d2 = str(input())
+          if(response_d2 == "yes" or response_d2 == "Y" or response_d1 == "y"):
+            print("Despite public attention over recent decades, SUDs, including alcohol use, remains a problem among veterans and military members.\n")
+          
+        #elif user_choice == 2:
+        #elif user_choice == 3:
+        #elif user_choice == 4:
+        #elif user_choice == 5:
+        #elif user_choice == 6:
+        #elif user_choice == 7:
+
+
+#mental health treatment question-
+    print("Have you ever recieved treatment/support for a mental problems(Y/N)")
+    Demographics_6 = input()
+    if(Demographics_6 == "yes" or Demographics_6 == "Y" or Demographics_6 == "y" or Demographics_6 == "YES"):
+      print("Did you recieve inpatient care?")
+      Demographics_6a = input()
+      if(Demographics_6a == "yes" or Demographics_6a == "Y" or Demographics_6a == "y" or Demographics_6a == "YES"):
+          
+          print("Is your current situation similar to the past when you were admitted?")
+          Demographics_6b = input()
+          if(Demographics_6b == "yes" or Demographics_6b == "Y" or Demographics_6b == "y" or Demographics_6b == "YES"):
+            print("RESULT: based off your responses, consider reaching out for outpatient services at the facility you were in previous or research some new programs.")
+          else:
+            print("RESULT: based off your responses, exercise caution and get a psychatric evaluation done.")
+
+      elif(Demographics_6a == "no" or Demographics_6a == "N" or Demographics_6a == "n" or Demographics_6a == "NO"):
+        print("Did you participate in any outpatient care or any therapy?")
+        Demographics_6c = input()
+        if(Demographics_6c == "yes" or Demographics_6c == "Y" or Demographics_6c == "y" or Demographics_6c == "YES"):
+          print("Are you currently seeing a therapist")
+
+          Demographics_6d = input()
+          if(Demographics_6d == "yes" or Demographics_6d == "Y" or Demographics_6d == "y" or Demographics_6d == "YES"):
+            print("On a scale from 0-3 how well is the therapy helping you work out your issues (0 being the lowest and 3 being the highest)")
+
+            Demographics_6e = int(input())
+            if(Demographics_6e == 0, Demographics_6e == 1):
+              print("Based off your response you should consider switching therapist. There are specialized therapist that target your goals and your specific trauma.")
+            else:
+              print("Based off your response it is indicated that your therpaist is a good fit for you and should help you continue to work throught your trauma and mental health issues.")  
+
+        else:
+          print("Consider reaching out to online therapy platforms or calling a office that offers in person therapy services.")
+
+    elif(Demographics_6 == "no" or Demographics_6 == "N" or Demographics_6 == "n" or Demographics_6 == "NO"):
+      print("is the abscence of therapy due to fear of talking about feelings (1), financial problems (2), or your judgement ruled it out as an option (3).")
+      Demographics_7 = int(input())
+      if(Demographics_7 == 1) or (Demographics_7 == 3):
+        print("It is normal to be afraid of talking about feelings, however, depending on the situation you are in sepaking out is the best option for all scenarios. Seeing a professional and taking the next steps are crucial for your future.")
+        print("35.2% of men think they had a diagnosable mental health condition at some point in their life ")
+        print("A fifth of men (19.5%) have been diagnosed for mental health conditions confirmed by professionals\n")
+        #add more statistics
+        print("________________________________________________________________")
+        print("|    Some warning signs you should be on the lookout for:       |")
+        print("|_______________________________________________________________|")
+        print("| (1) Persistent sense or worry                                 |")
+        print("| (2) Overwhleming feelings of sadness                          |")
+        print("| (3) Withdrawal from friends and family                        |")
+        print("| (4) Difficulty concentrating                                  |")
+        print("| (5) Feeling tired or fatigued                                 |")
+        print("| (6) Physical symptoms like shortness of breath or headaches   |")
+        print("_________________________________________________________________")
+        print("Enter the amount of criteria that fits you (1-6), or 0 if none applies to you")
+        warning_Criteria = int(input())
+        if(warning_Criteria > 0 and warning_Criteria <= 6):
+          for index in range(warning_Criteria):
+            print(f"You have selected {warning_Criteria} options, please enter the numbers that best describes you.")
+            warning_Criteria2 = int(input())
+            warning_criteria_container.append(warning_Criteria2)
+            #you need to add the list of options and match them with the index
+          print(f"You have identified the following warning signs",end='')
+          print(*warning_criteria_container, sep=",")
+          if(warning_Criteria >= 4):
+            print("RESULT: you are showing signs of mental illness and it would benefit you to participate in the surveys located in the program.")
+          else:
+            print("RESULT: your responses indicate you are low risk of having a diagnosable mental illness, but you are advised to participate in the surveys located in the program.")
+
+      elif(Demographics_7 == 2):
+        print("With mental health becoming less stigmatized and with the decline of mental health being brought to light, there has been in an increase in funding for counseling. With a simple google search you can find numerous websites that direct you to free conseling and therapy.")
+
+#mental health decline contributions-
+    count_decline = 0
+    print("MENTAL HEALTH DECLINE CONTRIBUTIONS")
+    print("Please see the options below, enter a (Y/N) if any apply to your situation:")
+    print("____________________________________________________________________________")
+
+    print("(1) Abuse or violence")
+    Demographics_8 = input()
+    if (Demographics_8 == "Y"):
+      count_decline = 1
+    else:
+      count_decline += 0
+
+    print("(2) Relationship problems(friends, family, or significant other")
+    Demographics_9 = input()
+    if (Demographics_9 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+
+    print("(3) Body image or self-image")
+    Demographics_10 = input()
+    if (Demographics_10 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+
+    print("(4) School or work problems")
+    Demographics_11 = input()
+    if (Demographics_11 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+
+    print("(5) Basic needs (no food or housing")
+    Demographics_12 = input()
+    if (Demographics_12 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+
+    print("(6) Financial problems")
+    Demographics_13 = input()
+    if (Demographics_13 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+    print("(7) Loneliness or isolation")
+    Demographics_14 = input()
+    if (Demographics_14 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+    print("(8) Grief or loss of someone or something")
+    Demographics_15 = input()
+    if (Demographics_15 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+    print("(9) Racism, homophobia, transphobia, or discrimination")
+    Demographics_16 = input()
+    if (Demographics_16 == "Y"):
+      count_decline += 1
+    else:
+      count_decline += 0
+    print(f"Your score is {count_decline}")
+    if(count_decline >= 7):
+      print("RESULT: your situation is considered high risk")
+    elif(count_decline >= 3 and count_decline < 7):
+      print("RESULT: your situation is considered moderate risk")
+    elif(count_decline < 3):
+      print("RESULT: your situation is considered low risk")
+
+#general health conditions-
+    print("Select all of the exisiting health conditions that apply, answer with a yes or no (Y/N):")
+    print("_________________________________________________________________________________________")
+    print()
+    print("Heart disease")
+    Demographics_17 = input()
+    print("Reproductive health concerns (PCOS, endometriosis, infertility, etc.")
+    Demographics_18 = input()
+    print("Diabetes")
+    Demographics_19 = input()
+    print("Cancer")
+    Demographics_20 = input()
+    print("Arthritis or other chronic pain")
+    Demographics_21 = input()
+    print("COPD or other lung conditions")
+    Demographics_22 = input()
+    print("Movement Disorders (involuntary tics, tardive dyskinesia, etc.")
+    Demographics_23 = input()
+    print("Other-Please speciify")
+    Demographics_24 = input()
+    #complete personalization process
+
+def option2():
+#alcohol addiction survey
+#0–1: No imminent problem, treatment not indicated.
+#2–3: Slight problem; treatment may not be necessary.
+#4–5: Moderate problem, a treatment plan should be considered.
+#6–7: Considerable difficulty, begin a treatment plan.
+#8–9: Extreme problem, treatment is vital.
+  print("the first survey is for alcohol addiction, if you would like to skip this just enter (skip).")
+  print("Note: it is crucial all answers to the survey is crucial for an accurate result.")
+  print("Respond to all of the questions with a (Y/N)*")
+  print("__________________________________________________________________________________________")
+
+  print("1. Do you often use drugs or alcohol in larger amounts or over a longer period of time than you intended?")
+  alcohol_q1 = input()
+  if(alcohol_q1 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q1 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q1 = input()
+
+  print("2. Have you for a while now wanted to cut back on drugs or alcohol or made unsuccessful attempts to do so?")
+  alcohol_q2 = input()
+  if(alcohol_q2 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q2 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q2 = input()
+
+  print("3. Do you spend a great deal of time finding, using, or recovering from drugs or alcohol?")
+  alcohol_q3 = input()
+  if(alcohol_q3 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q3 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q3 = input()
+
+  print("4. Do you have strong urges or powerful cravings to use drugs or alcohol?")
+  alcohol_q4 = input()
+  if(alcohol_q4 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q4 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q4 = input()
+
+  print("5. Has your use of drugs or alcohol resulted in your inability to meet your obligations at work, home, or school?")
+  alcohol_q5 = input()
+  if(alcohol_q5 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q5 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q5 = input()
+
+  print("6. Have you had to cut back on or abandon social, professional, or recreational activities due to your use of drugs or alcohol?")
+  alcohol_q6 = input()
+  if(alcohol_q6 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q6 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q6 = input()
+
+  print("7. Have you repeatedly used drugs or alcohol when it was hazardous to do so, such as while driving a car or operating machinery?")
+  alcohol_q7 = input()
+  if(alcohol_q7 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q7 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q7 = input()
+    
+  print("8. Have you experienced social or relationship problems due to your use of drugs or alcohol and kept using anyway?")
+  alcohol_q8 = input()
+  if(alcohol_q8 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q8 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q8 = input()
+
+  print("9. Have you kept using drugs or alcohol knowing that it has caused or worsened physical or mental health issues?")
+  alcohol_q9 = input()
+  if(alcohol_q9 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q9 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q9 = input()
+ 
+  print("10. When you attempt to cut back on or stop your use of drugs or alcohol, have you experienced uncomfortable physical or mental health symptoms (withdrawal)?")
+  alcohol_q10 = input()
+  if(alcohol_q10 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q10 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q10 = input()
+
+  print("11. Have you experienced diminished effects when you use drugs or alcohol compared to the past and/or have you needed more drugs or alcohol in order to feel the effects you're seeking (tolerance)?")
+  alcohol_q11 = input()
+  if(alcohol_q11 == "Y"):
+    addiction_alcohol_container.append(1)
+  elif(alcohol_q11 == "N"):
+    addiction_alcohol_container.append(0)
+  else:
+    print("Invalid response, try again")
+    alcohol_q11 = input()
+
+  addiction_alcohol_score =  sum(addiction_alcohol_container)
+  print(f"You scored, {addiction_alcohol_score}")
+  if(addiction_alcohol_score <= 1):
+    print("No imminent problem, treatment not indicated.")
+  elif(addiction_alcohol_score > 1 and addiction_alcohol_score < 4):
+    print("Slight problem; treatment not indicated.")
+  elif(addiction_alcohol_score >= 4 and addiction_alcohol_score < 6):
+    print("moderate problem, a treatment plan should be considered.")
+  elif(addiction_alcohol_score > 5 and addiction_alcohol_score < 8):
+    print("Considerable difficulty, begin a treatment plan.")
+  elif(addiction_alcohol_score > 7 and addiction_alcohol_score <= 11):
+    print("Extreme problem, treatment is vital.")
+
+#0–1: No imminent problem, treatment not indicated.
+#2–3: Slight problem; treatment may not be necessary.
+#4–5: Moderate problem, a treatment plan should be considered.
+#6–7: Considerable difficulty, begin a treatment plan.
+#8–9: Extreme problem, treatment is vital.
+
+
+def option3():
+    print("In the last two weeks how often have you been bothered by the following problems?")
+#NOT AT ALL = 0 point
+#SEVERAL DAYS = 1 point
+#MORE THAN HALF = 2 point
+#NEARLY EVERYDAY = 3 point
+    print("NOT AT ALL = 0, SEVERAL DAYS = 1, MORE THAN HALF = 2, NEARLY EVERYDAY = 3")
+    print("RESPONSES WILL BE 0, 1, 2, or 3")
+    print("1. Little interest or pleasure in doing things")
+    question1_depression = int(input())
+    depression_score.append(question1_depression)
+
+    print("2. Feeling down, depressed, or hopeless")
+    question2_depression = int(input())
+    depression_score.append(question2_depression)
+
+    print("3. Trouble falling or staying asleep, or sleeping too much")
+    question3_depression = int(input())
+    depression_score.append(question3_depression)
+
+    print("4. Feeling tired or having little energy")
+    question4_depression = int(input())
+    depression_score.append(question4_depression)
+
+    print("5. Poor appetite or overeating")
+    question5_depression = int(input())
+    depression_score.append(question5_depression)
+
+    print("6. Feeling bad about yourself - or that you are a failure or have let yourself or your family down")
+    question6_depression = int(input())
+    depression_score.append(question6_depression)
+
+    print("7. Trouble concentrating on things, such as reading the newspaper or watching television")
+    question7_depression = int(input())
+    depression_score.append(question7_depression)
+
+    print("8. Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual")
+    question8_depression = int(input())
+    depression_score.append(question8_depression)
+
+    print("9. Thoughts that you would be better off dead, or of hurting yourself")
+    question9_depression = int(input())
+    depression_score.append(question9_depression)
+
+    print("10. If you checked off any problems, how difficult have these problems made it for you at work, home, or with other people?")
+    question10_depression = int(input())
+    depression_score.append(question10_depression)
+    
+    depression_range = sum(depression_score)
+    if(depression_range >= 0) and (depression_range <= 9): 
+      print(f"Normal, {depression_range}")
+    elif(depression_range > 9) and (depression_range <= 19):
+      print(f"Mild Depression indicated, {depression_range}")
+    elif(depression_range > 19) and (depression_range <= 30):
+      print(f"Severe Depression indicated, {depression_range}")
+
+#scatter plot for the data
+    plt.scatter(depression_questions, depression_score)
+    plt.show()
+
+def option4():
+  print("Anxiety Screening portal")
+  print("Instructions: you will be asked a series of questions relating to anxiety indication.")
+  print("Your responses will conist of the following: Not at all = 0; Several days = 1; More than half the days = 2; Nearly every day = 3\n")
+  print("__________________________________________________________________________________________________________________________________")
+  print("1. Feeling nervous, anxious, or on edge")
+  anxiety_q1 = int(input())
+  Anxiety_container.append(anxiety_q1)
+  print("2. Not being able to stop or control worrying")
+  anxiety_q2 = int(input())
+  Anxiety_container.append(anxiety_q2)
+  print("3. Worrying too much about different things")
+  anxiety_q3 = int(input())
+  Anxiety_container.append(anxiety_q3)
+  print("4. Trouble relaxing")
+  anxiety_q4 = int(input())
+  Anxiety_container.append(anxiety_q4)
+  print("5. Being so restless that it is hard to sit still")
+  anxiety_q5 = int(input())
+  Anxiety_container.append(anxiety_q5)
+  print("6. Becoming easily annoyed or irritable")
+  anxiety_q6 = int(input())
+  Anxiety_container.append(anxiety_q6)
+  print("7. Feeling afraid, as if something awful might happen")
+  anxiety_q7 = int(input())
+  Anxiety_container.append(anxiety_q7)
+  anxiety_score =  sum(Anxiety_container)
+  print(f"You scored, {anxiety_score}")
+  if(anxiety_score < 5):
+    print("Minimal anxiety")
+  elif(anxiety_score > 4 and anxiety_score < 10):
+    print("Mild anxiety")
+  elif(anxiety_score >= 10 and anxiety_score < 15):
+    print("Moderate anxiety")
+  elif(anxiety_score >= 15 and anxiety_score < 22):
+    print("Severe anxiety")
+    
+#0-4: minimal anxiety
+#5-9: mild anxiety
+#10-14: moderate anxiety
+#15-21: severe anxiety
+
+#def BMI(weight, height):
+  #print('Enter your weight in pounds')
+  #weight_lbs = float(input())
+  #print('Enter your height in inches')
+  #height_inches = float(input()) 
+  #BMI = (weight_lbs * 703)/height_inches ** 2
+  #if BMI <= 18.4:
+    #print("You are underweight.")
+  #elif BMI <= 24.9:
+    #print("You are healthy.")
+  #elif BMI <= 29.9:
+    #print("You are over weight.")
+  #elif BMI <= 34.9:
+    #print("You are severely over weight.")
+  #elif BMI <= 39.9:
+    #print("You are obese.")
+  #else:
+    #print("You are severely obese.")
+  #print('Your BMI is',BMI)
+
+def option5():
+  #Eating_disorder_container = []
+  print("How much more or less do you feel you worry about your weight and body shape than other people your age?")
+  print("RESPONSES ARE THE FOLLOWING: I WORRY A LOT LESS THAN OTHER PEOPLE (0), I WORRY A LITTLE LESS THAN OTHER PEOPLE (1), I WORRY ABOUT THE SAME AS OTHER PEOPLE (2), I WORRY A LITTLE MORE THAN OTHER PEOPLE (3), I WORRY A LOT MORE THAN OTHER PEOPLE (4)")
+  eating_disorder_q1 = int(input())
+  if(eating_disorder_q1 == 0):
+    Eating_disorder_container.append(0)
+  elif(eating_disorder_q1 == 1):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q1 == 2):
+    Eating_disorder_container.append(2)
+  elif(eating_disorder_q1 == 3):
+    Eating_disorder_container.append(3)
+  elif(eating_disorder_q1 == 4):
+    Eating_disorder_container.append(4)
+
+  
+  print("How afraid are you of gaining 3 pounds?")
+  print("Response options: not afraid of gaining (0), Slightly afraid of gaining (1), moderately afraid of gaining (2), very afraid of gaining (3), terrified of gaining (4)")
+  eating_disorder_q2 = int(input())
+  if(eating_disorder_q2 == 0):
+    Eating_disorder_container.append(0)
+  elif(eating_disorder_q2 == 1):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q2 == 2):
+    Eating_disorder_container.append(2)
+  elif(eating_disorder_q2 == 3):
+    Eating_disorder_container.append(3)
+  elif(eating_disorder_q2 == 4):
+    Eating_disorder_container.append(4)
+
+
+  print(f"I HAVE NEVER BEEN ON A DIET (0), I WAS ON A DIET ABOUT ONE YEAR AGO (1), I WAS ON A DIET ABOUT 6 MONTHS AGO (2), I WAS ON A DIET ABOUT 3 MONTHS AGO (3), I WAS ON A DIET ABOUT 1 MONTH AGO (4), I WAS ON A DIET LESS THAN ONE MONTH AGO (5), IM ON A DIET NOW (6)")
+  print("When was the last time you went on a diet ?")
+  eating_disorder_q3 = int(input())
+  if(eating_disorder_q3 == 0):
+    Eating_disorder_container.append(0)
+  elif(eating_disorder_q3 == 1):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q3 == 2):
+    Eating_disorder_container.append(2)
+  elif(eating_disorder_q3 == 3):
+    Eating_disorder_container.append(3)
+  elif(eating_disorder_q3 == 4):
+    Eating_disorder_container.append(4)
+  elif(eating_disorder_q3 == 5):
+    Eating_disorder_container.append(5)
+  elif(eating_disorder_q3 == 6):
+    Eating_disorder_container.append(6)
+  
+
+  print("Compared to other things in your life, how important is your weight to you?")
+  eating_disorder_q4 = int(input("RESPONSE OPTIONS: MY WEIGHT IS NOT IMPORTANT COMPARED TO OTHER THINGS IN MY LIFE (0), MY WEIGHT IS A LITTLE MORE IMPORTANT THAN SOME OTHER THINGS IN MY LIFE (1), MY WEIGHT IS MORE IMPORTANT THAN MOST , BUT NOT ALL, THINGS IN MY LIFE (2), MY WEIGHT IS THE MOST IMPORTANT THING IN MY LIFE (3)"))
+  if(eating_disorder_q4 == 0):
+    Eating_disorder_container.append(0)
+  elif(eating_disorder_q4 == 1):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q4 == 2):
+    Eating_disorder_container.append(2)
+  elif(eating_disorder_q4 == 3):
+    Eating_disorder_container.append(3)
+
+
+  print("Do you ever feel fat?")
+  print("RESPONSE OPTIONS: NEVER (0), RARELY (1), SOMETIMES (2), OFTEN (3), ALWAYS (4)")
+  eating_disorder_q5 = int(input())
+  if(eating_disorder_q5 == 0):
+    Eating_disorder_container.append(0)
+  elif(eating_disorder_q5 == 1):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q5 == 2):
+    Eating_disorder_container.append(2)
+  elif(eating_disorder_q5 == 3):
+    Eating_disorder_container.append(3)
+  elif(eating_disorder_q5 == 4):
+    Eating_disorder_container.append(4)
+
+  
+  print("In the past 3 months, how many times have you had a sense of loss of control AND you also ate what most people would regard as an unusually large amount of food at one time, defined as definitely more than most people would eat under similar circumstances?")
+  eating_disorder_q19 = int(input())
+
+  if(eating_disorder_q19 > 0):
+    print("During these episodes of eating an unusually large amount of food with a sense of loss of control, do you:")
+    print()
+
+    print("Eat much more rapidly than normal?")
+    eating_disorder_q20 = input()
+    if(eating_disorder_q20 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q20 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q20 = input()
+
+    print("Eat until feeling uncomfortably full?")
+    eating_disorder_q21 = input()
+    if(eating_disorder_q21 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q21 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q21 = input()
+
+    print("Eat large amounts of food when not feeling physically hungry?")
+    eating_disorder_q22 = input()
+    if(eating_disorder_q22 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q22 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q22 = input()
+
+    print("Eat alone because of feeling embarrassed by how much you are eating?")
+    eating_disorder_q23 = input()
+    if(eating_disorder_q23 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q23 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q23 = input()
+
+    print("Feel disgusted, depressed, or very guilty afterward?")
+    eating_disorder_q24 = input()
+    if(eating_disorder_q24 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q24 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q24 = input()
+
+    print("How distressed or upset have you felt about these episodes?")
+    eating_disorder_q25 = input()
+    if(eating_disorder_q25 == "Y"):
+      Eating_disorder_container.append(1)
+    elif(eating_disorder_q25 == "N"):
+      Eating_disorder_container.append(0)
+    else:
+      print("Invalid response, try again")
+      eating_disorder_q25 = input()
+ 
+
+  print("In the past 3 months, how many times have you done any of the following as a means to control your weight and shape:")
+  eating_disorder_q7 = int(input())
+  Eating_disorder_container.append(eating_disorder_q7)
+  print("Made yourself throw-up?")
+  eating_disorder_q8 = int(input())
+  Eating_disorder_container.append(eating_disorder_q8)
+  print("Used diuretics or laxatives?")
+  eating_disorder_q9 = int(input())
+  Eating_disorder_container.append(eating_disorder_q9)
+  print("Exercised excessively?")
+  eating_disorder_q10 = int(input())
+  Eating_disorder_container.append(eating_disorder_q10)
+  print("Fasted?")
+  eating_disorder_q11 = int(input())
+  Eating_disorder_container.append(eating_disorder_q11)
+  
+#yes/no 
+  print("Do you consume a small amount of food (i.e., less than 1200 calories/day) on a regular basis to influence your shape or weight?")
+  eating_disorder_q12 = input()
+  if(eating_disorder_q12 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q12 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q12 = input()
+
+  print("Do you struggle with a lack of interest in eating or food?")
+  eating_disorder_q13 = input()
+  if(eating_disorder_q13 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q13 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q13 = input()
+
+  print("Do you avoid certain or many foods because of such features as texture, consistency, temperature, or smell, or have other people suggested this may be the case for you?")
+  eating_disorder_q14 = input()
+  if(eating_disorder_q14 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q14 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q14 = input()
+
+  print("Do you avoid certain or many foods because of fear of experiencing negative consequences like choking or vomiting, or have other people suggested this may be the case for you?")
+  eating_disorder_q15 = input()
+  if(eating_disorder_q15 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q15 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q15 = input()
+
+  print("Have you experienced significant weight loss (or are at a low weight for your age and height) but are not overly concerned with the size or shape of your body?")
+  eating_disorder_q16 = input()
+  if(eating_disorder_q16 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q16 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q16 = input()
+
+  print("Are you currently in treatment for an eating disorder?")
+  eating_disorder_q17 = input()
+  if(eating_disorder_q17 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q17 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q17 = input()
+
+  print("What was your lowest weight in the past year, including today, in pounds?")
+  eating_disorder_q18 = input()
+  if(eating_disorder_q18 == "Y"):
+    Eating_disorder_container.append(1)
+  elif(eating_disorder_q18 == "N"):
+    Eating_disorder_container.append(0)
+  else:
+    print("Invalid response, try again")
+    eating_disorder_q18 = input()
+
+  print('Enter your current weight in pounds')
+  weight_lbs = float(input())
+  print('Enter your current height in inches')
+  height_inches = float(input()) 
+  BMI = (weight_lbs * 703)/height_inches ** 2
+  if BMI < 18.5:
+    Eating_disorder_container.append(1)
+  elif BMI >= 18.5 and BMI <= 24.9:
+     Eating_disorder_container.append(0)
+  elif BMI >= 25.0 and BMI <= 29.9:
+    Eating_disorder_container.append(1)
+  elif BMI >= 30:
+    Eating_disorder_container.append(2)
+  Score_eating_disorder = sum(Eating_disorder_container)
+  print(f"SCORE : {Score_eating_disorder}")
+  if(Score_eating_disorder <= 20):
+    print("RESULT: You are considered low risk for a eating disorder. Treatment not neccessary.")
+  elif(Score_eating_disorder > 21 and Score_eating_disorder < 40):
+    print("RESULT: You are considered moderate risk for an eating disorder. Treatment may be needed")
+  elif(Score_eating_disorder > 41):
+    print("RESULT: You are considered high risk for an eating disorder. Treatment advised, Seek professional help.")
+  
+  #base score is 100 being highest
+  #yes no's = 0 or 1s
+
+#def option6():
+  #print("ADHD")
+  #print("1. How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?")
+  #print("2. How often do you have difficulty getting things in order when you have to do a task that requires organization?")
+  #print("3. How often do you have problems remembering appointments or obligations?")
+  #print("4. When you have a task that requires a lot of thought, how often do you avoid or delay getting started?")
+  #print("5. How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?")
+  #print("6. How often do you feel overly active and compelled to do things, like you were driven by a motor?")
+  #print("7. How often do you make careless mistakes when you have to work on a boring or difficult project?")
+  #print("8. How often do you have difficulty keeping your attention when you are doing boring or repetitive work?")
+  #print("9. How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?")
+  #print("10. How often do you misplace or have difficulty finding things at home or at work?")
+  #print("11. How often are you distracted by activity or noise around you?")
+  #print("12. How often do you leave your seat in meetings or other situations in which you are expected to remain seated?")
+  #print("13. How often do you feel restless or fidgety?")
+  #print("14. How often do you have difficulty unwinding and relaxing when you have time to yourself?")
+  #print("15. How often do you find yourself talking too much when you are in social situations?")
+  #print("16. When you’re in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?")
+  #print("17. How often do you have difficulty waiting your turn in situations when turn taking is required?")
+  #print("18. How often do you interrupt others when they are busy?")
+
+if __name__=='__main__':
+    while(True):
+        print_menu()
+        option = ''
+        try:
+            option = int(input('Enter your choice: '))
+        except:
+            print('Wrong input. Please enter a number ...')
+        #Check what choice was entered and act accordingly
+        if option == 1:
+           option1()
+        elif option == 2:
+            option2()
+        elif option == 3:
+            option3()
+        elif option == 4:
+            option4()
+        elif option == 5:
+            option5()
+        elif option == 6:
+            print('Thanks message before exiting')
+            exit()
+        else:
+            print('Invalid option. Please enter a number between 1 and 6.')
